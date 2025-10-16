@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name='robots' content='noindex, nofollow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
+	<meta name="bingbot" content="noindex,nofollow"/>
+	<meta name="googlebot" content="noindex,nofollow"/>
+	<meta name="revisit-after" content="daily"/>
+	<meta http-equiv="X-Robots-Tag" content="noindex, nofollow">
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>CADAgro</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/full-slider.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <script type="text/javascript" src="include/nav.js"></script>
+        <section class="inner-page padding-sm top-m">
+        <div class="container text-center">
+            <h2>404</h2>
+        </div>
+    </section>
+    <section class="padding">
+    <div style="text-align:center; padding: 70px 0px;">
+        <h1>404</h1>
+        <h2 style="color: #000;">Oops! Page Not Found</h2>
+        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        <a href="/" class="lbla">Go Back to Home</a>
+
+    </div>
+</section>
+    <script type="text/javascript" src="include/footer.js"></script>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/top.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/script.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/popup-gallery.js"></script><script src="js/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".bus_enq").on('keypress keyup blur', '.alpha', function(e) {
+                var key = e.keyCode;
+                if (key >= 48 && key <= 57) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+    </script><script>	$(document).ready(function() {$("#inquiry_form").validate({	rules: {		name:{			required:true		},		product:{			required:true		},		town:{			required:true		},				phone:{			required:true,			number:true		},		email:{			required:true,			email:true		},		details:{			required:true		}	},	messages: {		name:{			required:"Please enter name "		},		product:{			required:"Please Select Product "		},		town:{			required:"Please enter town "		},		phone:{			required:"Please enter phone no.",			number:"Only Number allow"		},		email:{			required:"Please enter your email",			email:"Email Not Valid"		},		details:{			required:"Please enter details "		},	}});  $("#inquiry_form").on('submit',function(e) {	 	var form = this;	e.preventDefault();	e.stopPropagation();		if (!$("#inquiry_form").valid()) {		return false;	}		 	form.submitted = true;		$("#mesg").html("");			$("#mesg").css("display","");			$(".loader").css("display","");			$(this).attr("disabled","disabled");		$("#btn_submit").attr("disabled","disabled");		var form_data=new FormData(this);	 $.ajax({		cache:false,		url: 'inquiry.php',		type: "POST",		data: form_data,		contentType: false,		processData:false,		success: function(response){				console.log(response);			 			$("#btn_submit").attr("disabled",false);			if(response.trim() == '1') {				$('#inquiry_form').trigger('reset');					 $(".loader").css("display","none");					$('#inquiry').modal('hide');				alert('Your Inquiry successfully submited. Thank you.');			 }			else if(response.trim() == '0')			{									location.href="http://cadagro.co.in";			}					},		error: function(jqXHR, textStatus, errorThrown) {			console.log(textStatus, errorThrown);		}	});	});});	</script>	
+</body>
+
+</html>
